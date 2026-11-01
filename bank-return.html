@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta name="referrer" content="no-referrer">
+<title>Back to Sprout</title>
+<style>body{font:15px -apple-system,system-ui,sans-serif;background:#15171a;color:#e8e6e1;display:grid;place-items:center;min-height:90vh;margin:0}p{max-width:30em;text-align:center;line-height:1.5}</style>
+</head><body><p id="m">Taking you back to Sprout…</p>
+<script>
+(function () {
+  var query = new URLSearchParams(location.search)
+  var match = /^p(\d{4,5})\./.exec(query.get('state') || '')
+  var port = match ? Number(match[1]) : 0
+  if (port >= 1024 && port <= 65535) location.replace('http://127.0.0.1:' + port + '/bank/callback' + location.search)
+  else document.getElementById('m').textContent = 'This link didn’t start in Sprout. Open Sprout and press Connect a Bank again.'
+})()
+</script></body></html>
